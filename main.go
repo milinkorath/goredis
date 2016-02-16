@@ -53,7 +53,7 @@ func countFunc(w http.ResponseWriter, req *http.Request) {
 			if strings.HasPrefix(key, values[1]) {
 				count++
 			}
-		} else {
+		} else if len(values) == 1 {
 			count = len(redisMap)
 			break
 		}
