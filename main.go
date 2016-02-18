@@ -1,3 +1,8 @@
+// service used to
+// store value based on key, {curl -X PUT http://localhost:8080/total_one/100}
+ // retrive value based key, {curl -X GET http://localhost:8080/total_one}
+ // delete key {curl -X DELETE http://localhost:8080/total_one}
+ // count key{curl http://localhost:8080/count/total}
 package main
 
 import (
@@ -15,6 +20,7 @@ func main() {
 	http.HandleFunc("/count/", countFunc)
 	http.ListenAndServe(":8080", nil)
 }
+// to handle http methods put, get and delete
 func handleFunc(w http.ResponseWriter, req *http.Request) {
 	keyValue := req.URL.Path[1:]
 	values := strings.Split(keyValue, "/")
@@ -43,7 +49,7 @@ func handleFunc(w http.ResponseWriter, req *http.Request) {
 	}
 
 }
-
+// to handle /count request
 func countFunc(w http.ResponseWriter, req *http.Request) {
 	keyValue := req.URL.Path[1:]
 	values := strings.Split(keyValue, "/")
